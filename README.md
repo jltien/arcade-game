@@ -1,20 +1,8 @@
-# Classic Arcade Game Clone Project
+# Classic Arcade Game
+This is Beetle Hop, an arcade game.
 
-## Table of Contents
+## How To Play
+The player is first prompted to pick their character. After selecting the character, the player uses the arrow keys to move the character towards the water. If the character collides with a beetle, the character is sent back to the beginning and must start over. When the player reaches the water, the player win!
 
-- [Instructions](#instructions)
-- [Contributing](#contributing)
-
-## Instructions
-
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
-
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
-
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+## Dependencies
+None. This game was implemented using HTML, CSS and JavaScript ES6.
