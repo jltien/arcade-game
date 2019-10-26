@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Beetle Hop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="modal selection">
+        <div class="modal-content">
+            <div id="sprite-selection">
+                <h1>Play Beetle Hop</h1>
+                <h4>avoid the beetles at all cost!</h4>
+                <p>choose your sprite:</p>
+                <img class="sprite" id="images/char-boy.png" src="images/char-boy.png">
+                <img class="sprite" id="images/char-cat-girl.png" src="images/char-cat-girl.png">
+                <img class="sprite" id="images/char-horn-girl.png" src="images/char-horn-girl.png">
+                <img class="sprite" id="images/char-pink-girl.png" src="images/char-pink-girl.png">
+                <img class="sprite" id="images/char-princess-girl.png" src="images/char-princess-girl.png">
+            </div>
+        </div>
+    </div>
+    <div class="modal winning">
+        <div class="modal-content">
+            <img src="images/congrats.png" alt="congrats" height="100"> <!-- Icon from srip on www.flaticon.com-->
+            <div id="congrats">
+                <h1>WINNER!</h1>
+                <h3>you escaped... but can you do it again?</h3>
+                <button class="close-button">play again!</button>
+            </div>
+        </div>
+    </div>
+    <div id="title">
+        <h2>BEETLE JUMP</h2>
+    </div>
+    <script src="js/resources.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/engine.js"></script>
+</body>
+
+</html>
