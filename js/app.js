@@ -4,7 +4,7 @@ let winningModal = document.querySelector('.modal.winning');
 
 // Enemies our player must avoid
 var Enemy = function (x, y) {
-    this.sprite = 'images/enemy-bug.png'; 
+    this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
     this.speed = randomNum();
@@ -32,7 +32,7 @@ class Player {
     // Checks whether the player has hit an enemy
     update() {
         for (const enemy of allEnemies) {
-            if (checkCollision(player, enemy)) {
+            if (this.checkCollision(enemy)) {
                 player = new Player(this.sprite, 2, 5);
             }
         }
@@ -47,31 +47,42 @@ class Player {
 
     // Moves the player in the inputted direction
     handleInput(direction) {
-        if (direction === 'left') {
-            if (this.x !== 0) {
-                this.x--;
-            }
+        switch (direction) {
+            case 'left':
+                if (this.x !== 0) {
+                    this.x--;
+                }
+                break;
+            case 'up':
+                if (this.y !== 0) {
+                    this.y--;
+                }
+                // If the player has reached the water
+                if (this.y === 0) {
+                    player = new Player(player.sprite, 2, 5);
+                    openWinning();
+                }
+                break;
+            case 'right':
+                if (this.x !== 4) {
+                    this.x++;
+                }
+                break;
+            case 'down':
+                if (this.y !== 5) {
+                    this.y++;
+                }
+                break;
         }
-        else if (direction === 'up') {
-            if (this.y !== 0) {
-                this.y--;
-            }
-            // If the player has reached the water
-            if (this.y === 0) {
-                player = new Player(player.sprite, 2, 5);
-                openWinning();
-            }
+    }
+
+    // Checks for collisions
+    checkCollision(enemy) {
+        const errorMargin = 0.5;
+        if (Math.abs(this.x - enemy.x) <= errorMargin && Math.abs(this.y - enemy.y) <= errorMargin) {
+            return true;
         }
-        else if (direction === 'right') {
-            if (this.x !== 4) {
-                this.x++;
-            }
-        }
-        else {
-            if (this.y !== 5) {
-                this.y++;
-            }
-        }
+        return false;
     }
 }
 
@@ -87,8 +98,8 @@ window.onload = function startGame() {
 player = new Player();
 
 // Add event listener to close the winning modal
-document.querySelector('.close-button').addEventListener('click', function() {
-    winningModal.classList.toggle('show-modal'); 
+document.querySelector('.close-button').addEventListener('click', function () {
+    winningModal.classList.toggle('show-modal');
 });
 // Add event listener for key presses
 document.addEventListener('keyup', function (e) {
@@ -103,15 +114,6 @@ document.addEventListener('keyup', function (e) {
 
 // Generates a random number between 1 and 3
 const randomNum = () => Math.floor(Math.random() * 3) + 1;
-
-// Checks for collisions
-function checkCollision(player, enemy) {
-    const errorMargin = 0.3;
-    if (Math.abs(player.x - enemy.x) <= errorMargin && Math.abs(player.y - enemy.y) <= errorMargin) {
-        return true;
-    }
-    return false;
-}
 
 // Opens the sprite selection modal
 function openSelection() {
@@ -128,5 +130,5 @@ function openSelection() {
 // Opens the winning modal
 function openWinning() {
     winningModal.classList.toggle('show-modal');
-    
+
 }
